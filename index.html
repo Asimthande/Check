@@ -15,7 +15,54 @@
             padding: 20px;
         }
 
+        .envelope-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .envelope {
+            width: 200px;
+            height: 120px;
+            background: #f06292;
+            position: relative;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .envelope:before, .envelope:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .envelope:before {
+            border-width: 0 100px 60px 100px;
+            border-color: transparent transparent #f48fb1 transparent;
+            top: 0;
+            left: 0;
+        }
+
+        .envelope:after {
+            border-width: 60px 100px 0 100px;
+            border-color: #f48fb1 transparent transparent transparent;
+            bottom: 0;
+            left: 0;
+        }
+
+        .envelope-text {
+            margin-top: 20px;
+            color: #c2185b;
+            font-size: 1.2em;
+        }
+
         .letter {
+            display: none;
             background: #ffffff;
             padding: 40px;
             border-radius: 12px;
@@ -23,6 +70,7 @@
             max-width: 700px;
             width: 100%;
             line-height: 1.6;
+            animation: fadeIn 0.8s ease forwards;
         }
 
         .address-block {
@@ -57,40 +105,66 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hide {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="letter">
-        <h1>To Your Heart</h1>
 
-        <div class="address-block">
-            <div class="from">
-                From:<br>
-                The Bottom of My Heart ❤️<br>
-                April 13, 2025
-            </div>
-            <div class="to" style="text-align: right;">
-                To:<br>
-                The Heart of Amahle Ncube 💖
-            </div>
+<div id="envelopeScreen" class="envelope-container">
+    <div class="envelope" onclick="openLetter()"></div>
+    <div class="envelope-text">Tap to open your letter 💌</div>
+</div>
+
+<div id="letterContent" class="letter hide">
+    <h1>To Your Heart</h1>
+
+    <div class="address-block">
+        <div class="from">
+            From:<br>
+            The Bottom of My Heart ❤️<br>
+            April 13, 2025
         </div>
-
-        <p>Hey Amahle,</p>
-
-        <p>I just wanted to write you a little something, straight from my heart. Nothing fancy, just honest words.</p>
-
-        <p>You mean a lot to me. Being with you feels calm, real, and right. You have this way of making everything better — even the small, everyday stuff. And I love that about you.</p>
-
-        <p>I might not always say the perfect thing, but I hope you know how much I care. This letter is just my way of telling you that you’re always on my mind, and always in my heart.</p>
-
-        <p>Thank you for being you. For your laughs, your kindness, your strength, and for letting me in.</p>
-
-        <div class="closing">
-            With love,<br>
-            Me 💌
+        <div class="to" style="text-align: right;">
+            To:<br>
+            The Heart of Amahle Ncube 💖
         </div>
-
-        <div class="heart">💗</div>
     </div>
+
+    <p>Sawbona Mancube Wami Omuhle</p>
+
+    <p>I just wanted to write you a little something, straight from my heart. Nothing fancy, just honest words.</p>
+
+    <p>You mean a lot to me. Being with you feels calm, real, and right. You have this way of making everything better — even the small, everyday stuff. And I love that about you.</p>
+
+    <p>Even though you don't want me to see your beautiful face on a video call,</p>
+
+    <p>I might not always say the perfect thing, but I hope you know how much I care. This letter is just my way of telling you that you’re always on my mind, and always in my heart.</p>
+
+    <p>Thank you for being you. For your laughs, your kindness, your strength, and for letting me in.</p>
+
+    <div class="closing">
+        With love,<br>
+        Me 💌
+    </div>
+
+    <div class="heart">💗</div>
+</div>
+
+<script>
+    function openLetter() {
+        document.getElementById("envelopeScreen").style.display = "none";
+        const letter = document.getElementById("letterContent");
+        letter.classList.remove("hide");
+    }
+</script>
+
 </body>
 </html>
