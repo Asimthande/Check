@@ -1,76 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zu">
 <head>
-    <meta charset="UTF-8">
-    <title>Ivulwe Ngothando</title>
-    <style>
-        body {
-            background: #fff0f5;
-            font-family: 'Georgia', serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amahle Ncube</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        .envelope-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: black;
+      background-image: url('1.jpg'); /* Replace with your image */
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: contain;
+      background-attachment: fixed;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      color: white;
+      text-align: center    ;
+    }
 
-        .envelope {
-            width: 200px;
-            height: 120px;
-            background: #f06292;
-            position: relative;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
+    .message-box {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 90%;
+      width: 80%;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(255, 192, 203, 0.5);
+      position: absolute;
+      bottom: 50px;
+      z-index: 2;
+      display: none;
+      max-height: 70vh;
+      overflow: hidden;
+    }
 
-        .envelope:before, .envelope:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-style: solid;
-        }
+    .scroll-container {
+      height: 100%;
+      overflow-y: hidden;
+      animation: scrollText 60s linear forwards;
+    }
 
-        .envelope:before {
-            border-width: 0 100px 60px 100px;
-            border-color: transparent transparent #f48fb1 transparent;
-            top: 0;
-            left: 0;
-        }
+    @keyframes scrollText {
+      0% {
+        transform: translateY(100%);
+      }
+      100% {
+        transform: translateY(-100%);
+      }
+    }
 
-        .envelope:after {
-            border-width: 60px 100px 0 100px;
-            border-color: #f48fb1 transparent transparent transparent;
-            bottom: 0;
-            left: 0;
-        }
+    .message-content, .typewriter-message {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      line-height: 1.6;
+      color: #ffe6f2;
+      text-align: left;
+      white-space: pre-wrap;
+    }
 
-        .envelope-text {
-            margin-top: 20px;
-            color: #c2185b;
-            font-size: 1.2em;
-        }
+    .typewriter-message {
+      display: none;
+      max-height: 70vh;
+      overflow-y: auto;
+      padding-right: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: #ffb6c1 rgba(0, 0, 0, 0.2);
+    }
 
-        a {
-            text-decoration: none;
-        }
-    </style>
+    .typewriter-message::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .typewriter-message::-webkit-scrollbar-thumb {
+      background: #ffb6c1;
+      border-radius: 10px;
+    }
+
+    .typewriter-message::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .emphasize {
+      font-weight: bold;
+      color: #ffb6c1;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: 100px;
+      background-color: transparent;
+      border: none;
+      font-size: 4rem;
+      color: red;
+      cursor: pointer;
+      z-index: 2;
+      animation: heart-pulse 1.5s infinite alternate;
+    }
+
+    @keyframes heart-pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .heart-falling {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+    }
+
+    .heart-falling::before,
+    .heart-falling::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart-falling::before { top: -15px; left: 0; }
+    .heart-falling::after { left: -15px; top: 0; }
+
+    @keyframes float {
+      0% {
+        bottom: -10%;
+        transform: translateX(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        transform: translateX(50px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <a href="content.html" class="envelope-container">
-        <div class="envelope"></div>
-        <div class="envelope-text">Vula Incwadi Ufunde, Ulalele 💌</div>
-    </a>
+  <h1 id="li">MaNcube Wami Omuhle</h1>
 
+  <div class="hearts">
+    <script>
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart-falling');
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+        heart.style.opacity = Math.random();
+        document.querySelector('.hearts').appendChild(heart);
+      }
+    </script>
+  </div>
+
+  <button class="heart" id="heart-button">❤️</button>
+
+  <div class="message-box" id="message-box">
+    <!-- Scrolling Text -->
+    <div class="scroll-container" id="scrolling-container">
+      <div class="message-content" id="scrolling-message">
+Ngihleli lapha ngicabanga ngawe, mama ❤️  
+Angazi nokuthi ngiqale kuphi, kodwa ake ngiqale ngokugcina: Ngiyakuthanda, mama. ❤️  
+Ngiyaxolisa uma ngixova inkulumo – lokhu kungenxa yokuthi kuningi engifisa ukukusho,  
+kodwa inhliziyo yami ifuna nje ukugxuma, ikusho konke okukuyo.  
+
+Kwezinye izikhathi, ngifisa sengathi inhliziyo yami ingakhuluma yona uqobo  
+ngoba lokhu engikushoyo akukafinyeleli ngisho iphesenti kulokho engikuzwayo ngawe.  
+
+Emehlweni ami, uyiDayimane – into enhle, esiyigugu, ebalulekile,  
+futhi engatholakali kalula. Ngisazibuza nanamuhla ukuthi yini enkulu kangaka engiyenzile  
+ukuthi ngifanele uthando lwakho. 🥺  
+
+Ngiyabonga ngokuba sempilweni yami, sthandwa sami.  
+Ngifisa sitshengise intsha yanamuhla ukuthi uthando lwangempela luyinto ekanjani😭🥺  
+Sibe isibonelo kulaba abaphambi kwethu nabo laba abasilandelayo  
+Uthando lwethu ngifisa lube kanjena inguna-phakade  
+Ngizicelela ukuthi sihlale njalo kanjena, dali.  
+
+Yebo, kuye kube nezikhathi lapho singaboni ngaso linye,  
+kodwa ngicela into eyodwa kuphela kuwe, mama – inhlonipho yakho kanye nesineke.  
+Ngiyazi ukuthi ungakwazi ukukwenza lokho,  
+ngoba uthando lwakho lukhulu kunazo zonke lezinto engizicelayo.  
+
+Ngiyabonga ngokungithanda. ❤️
+      </div>
+    </div>
+
+    <!-- Typewriter -->
+    <div class="typewriter-message" id="typewriter-message"></div>
+  </div>
+
+  <script>
+    const fullMessage = `Ngihleli lapha ngicabanga ngawe, mama ❤️  
+Angazi nokuthi ngiqale kuphi, kodwa ake ngiqale ngokugcina: Ngiyakuthanda, mama. ❤️  
+Ngiyaxolisa uma ngixova inkulumo – lokhu kungenxa yokuthi kuningi engifisa ukukusho,  
+kodwa inhliziyo yami ifuna nje ukugxuma, ikusho konke okukuyo.  
+
+Kwezinye izikhathi, ngifisa sengathi inhliziyo yami ingakhuluma yona uqobo  
+ngoba lokhu engikushoyo akukafinyeleli ngisho iphesenti kulokho engikuzwayo ngawe.  
+
+Emehlweni ami, uyiDayimane – into enhle, esiyigugu, ebalulekile,  
+futhi engatholakali kalula. Ngisazibuza nanamuhla ukuthi yini enkulu kangaka engiyenzile  
+ukuthi ngifanele uthando lwakho. 🥺  
+
+Ngiyabonga ngokuba sempilweni yami, sthandwa sami.  
+Ngifisa sitshengise intsha yanamuhla ukuthi uthando lwangempela luyinto ekanjani😭🥺  
+Sibe isibonelo kulaba abaphambi kwethu nabo laba abasilandelayo  
+Uthando lwethu ngifisa lube kanjena inguna-phakade  
+Ngizicelela ukuthi sihlale njalo kanjena, dali.  
+
+Yebo, kuye kube nezikhathi lapho singaboni ngaso linye,  
+kodwa ngicela into eyodwa kuphela kuwe, mama – inhlonipho yakho kanye nesineke.  
+Ngiyazi ukuthi ungakwazi ukukwenza lokho,  
+ngoba uthando lwakho lukhulu kunazo zonke lezinto engizicelayo.  
+
+Ngiyabonga ngokungithanda. ❤️`;
+
+    document.getElementById('heart-button').addEventListener('click', function () {
+      document.getElementById('message-box').style.display = 'block';
+      document.getElementById('li').style.position = 'absolute';
+      document.getElementById('li').style.top = '10px';
+      document.getElementById('heart-button').style.display = 'none';
+    });
+
+    // After scroll animation (60s), switch to typewriter
+    setTimeout(() => {
+      document.getElementById('scrolling-container').style.display = 'none';
+
+      const typewriterEl = document.getElementById('typewriter-message');
+      typewriterEl.style.display = 'block';
+
+      const words = fullMessage.split(/(\s+)/);
+      let i = 0;
+
+      function typeWord() {
+        if (i < words.length) {
+          let word = words[i];
+          let clean = word.toLowerCase().replace(/[^a-z]/g, '');
+          const keywords = ["inhlonipho", "uthando", "ngiyabonga", "sithandwa", "mama"];
+          if (keywords.includes(clean)) {
+            word = `<span class="emphasize">${word}</span>`;
+          }
+          typewriterEl.innerHTML += word;
+          i++;
+          setTimeout(typeWord, 160); // Delay per word
+        }
+      }
+
+      typeWord();
+    }, 60000);
+  </script>
 </body>
 </html>
